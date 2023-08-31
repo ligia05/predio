@@ -1,0 +1,25 @@
+body {
+    width: 70%;
+  }
+  
+  .predio {
+    margin: 0 auto;
+    width: 500px;
+    border: 2px solid black;
+    height: 70vh;
+    background-color: aliceblue;
+  }
+  
+  .andar {
+    height: 3.5vh;
+    margin: 1vh;
+    width: 100%;
+    display: flex;
+  }
+  
+  .apartamento {
+    height: 100%;
+    width: 20%;
+    margin: 0 auto;
+    border: 1px solid black;
+  }
