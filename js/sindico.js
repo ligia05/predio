@@ -1,7 +1,10 @@
 const rua = document.querySelector("body");
-const mes = document.querySelector('#mes-referencia');
-const pesquisa = document.querySelector('#pesquisa');
-const form = document.querySelector('form');
+const mes = document.querySelector("#mes-referencia");
+const pesquisa = document.querySelector("#pesquisa");
+const forms = Array.from(document.querySelectorAll("form"));
+const botaoEntrar = document.querySelector(
+  'div.porteiro > form > button[type="submit"]'
+);
 rua.style.backgroundColor = "blue";
 
 const listaInformacaoDosApartamentos = [
@@ -11,12 +14,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 9, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 3]
-      }
+        mes: [5, 6, 3],
+      },
     ],
   },
 
@@ -26,12 +29,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [12, 8, 5]
+        mes: [12, 8, 5],
       },
       {
         status: true,
-        mes: [4, 1, 2]
-      }
+        mes: [4, 1, 2],
+      },
     ],
   },
   {
@@ -40,12 +43,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 4, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -54,12 +57,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -68,12 +71,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -82,12 +85,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -96,12 +99,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -110,12 +113,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -124,12 +127,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -138,12 +141,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -152,12 +155,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -166,12 +169,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -180,12 +183,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -194,12 +197,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -208,12 +211,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -222,12 +225,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -236,12 +239,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -250,12 +253,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -264,12 +267,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -278,12 +281,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -292,12 +295,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -306,12 +309,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -320,12 +323,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -334,12 +337,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -348,12 +351,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -362,12 +365,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -376,12 +379,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -390,12 +393,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -404,12 +407,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -418,12 +421,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -432,12 +435,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -446,12 +449,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -460,12 +463,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -474,12 +477,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -488,12 +491,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -502,12 +505,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -516,12 +519,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -530,12 +533,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -544,12 +547,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -558,12 +561,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -572,12 +575,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -586,12 +589,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -600,12 +603,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -614,12 +617,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -628,12 +631,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -642,12 +645,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -656,12 +659,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -670,12 +673,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -684,12 +687,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -698,12 +701,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -712,12 +715,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
   {
@@ -726,12 +729,12 @@ const listaInformacaoDosApartamentos = [
     pago: [
       {
         status: false,
-        mes: [1, 2, 3]
+        mes: [1, 2, 3],
       },
       {
         status: true,
-        mes: [5, 6, 7]
-      }
+        mes: [5, 6, 7],
+      },
     ],
   },
 ];
@@ -788,27 +791,33 @@ const nomes = [
   "Inês",
   "Leda",
   "Fatima",
-  "Lourdes"
+  "Lourdes",
 ];
 
-form.addEventListener('submit', evento => evento.preventDefault());
+forms.forEach((form) =>
+  form.addEventListener("submit", (evento) => evento.preventDefault())
+);
 
 nomes.forEach((nome, indice) => {
   const apartamento = listaInformacaoDosApartamentos[indice];
-  apartamento.nome = nome; 
-})
+  apartamento.nome = nome;
+});
 
 const listaDeApartamentosNaTela = Array.from(
   document.querySelectorAll(".apartamento")
 ).reverse();
 
-mes.addEventListener('change', function(evento) {
+mes.addEventListener("change", function (evento) {
   const mesReferencia = +evento.target.value;
-  decideQuemEstaDevendo(listaInformacaoDosApartamentos, listaDeApartamentosNaTela, mesReferencia);
+  decideQuemEstaDevendo(
+    listaInformacaoDosApartamentos,
+    listaDeApartamentosNaTela,
+    mesReferencia
+  );
 });
 
-pesquisa.addEventListener('change', gerenciarPesquisa);
-pesquisa.addEventListener('input', gerenciarPesquisa);
+pesquisa.addEventListener("change", gerenciarPesquisa);
+pesquisa.addEventListener("input", gerenciarPesquisa);
 
 listaInformacaoDosApartamentos.sort(function (itemA, itemB) {
   if (Number(itemA.apartamento) < Number(itemB.apartamento)) {
@@ -822,93 +831,165 @@ listaInformacaoDosApartamentos.sort(function (itemA, itemB) {
   return 0;
 });
 
-listaDeApartamentosNaTela.forEach(elemento => {
-  elemento.addEventListener('contextmenu', gerenciarPagamento);
-  elemento.addEventListener('click', gerenciarDevedor);
+listaDeApartamentosNaTela.forEach((elemento) => {
+  elemento.addEventListener("contextmenu", gerenciarPagamento);
+  elemento.addEventListener("click", gerenciarDevedor);
 });
 
-decideQuemEstaDevendo(listaInformacaoDosApartamentos, listaDeApartamentosNaTela);
+decideQuemEstaDevendo(
+  listaInformacaoDosApartamentos,
+  listaDeApartamentosNaTela
+);
+
+criaElementoDeApartamento(listaInformacaoDosApartamentos);
+botaoEntrar.addEventListener("click", gerenciaEntradaNoPredio);
 
 function gerenciarDevedor(evento) {
   const target = evento.target;
-  const id = +target.id;
+  const id = +target.id.substring(3);
   const mes = mesDeReferencia();
 
+  if (target.tagName !== 'DIV') {
+    return;
+  }
+
+  if (mes === 0) {
+    return;
+  }
+
   incluirDevedor(id, mes);
-  decideQuemEstaDevendo(listaInformacaoDosApartamentos, listaDeApartamentosNaTela, mes);
+  decideQuemEstaDevendo(
+    listaInformacaoDosApartamentos,
+    listaDeApartamentosNaTela,
+    mes
+  );
 }
 
 function gerenciarPagamento(evento) {
-  evento.preventDefault();
   const target = evento.target;
-  const id = +target.id;
+
+  if (target.tagName !== 'DIV') {
+    return;
+  }
+
+  evento.preventDefault();
+  const id = +target.id.substring(3);
   const mes = mesDeReferencia();
 
+  if (mes === 0) {
+    return;
+  }
+
   recebePagamento(id, mes);
-  decideQuemEstaDevendo(listaInformacaoDosApartamentos, listaDeApartamentosNaTela, mes);
+  decideQuemEstaDevendo(
+    listaInformacaoDosApartamentos,
+    listaDeApartamentosNaTela,
+    mes
+  );
 }
 
 function mesDeReferencia() {
-  const mes = +document.querySelector('#mes-referencia').value;
+  const mes = +document.querySelector("#mes-referencia").value;
   return isNaN(mes) ? 0 : mes;
 }
 
 function recebePagamento(idDoApartamento, mesAtual) {
-  const index = listaInformacaoDosApartamentos.findIndex(apartamento => apartamento.id === idDoApartamento);
-  const pagamentoIndex = listaInformacaoDosApartamentos[index].pago.findIndex(value => value.status);
-  const pagouEsseMes = listaInformacaoDosApartamentos[index].pago[pagamentoIndex].mes.includes(mesAtual);
+  const index = listaInformacaoDosApartamentos.findIndex(
+    (apartamento) => apartamento.id === idDoApartamento
+  );
+  const pagamentoIndex = listaInformacaoDosApartamentos[index].pago.findIndex(
+    (value) => value.status
+  );
+  const pagouEsseMes =
+    listaInformacaoDosApartamentos[index].pago[pagamentoIndex].mes.includes(
+      mesAtual
+    );
 
-  const naoPagamentoIndex = listaInformacaoDosApartamentos[index].pago.findIndex(value => !value.status);
-  const naoPagouEsseMes = listaInformacaoDosApartamentos[index].pago[naoPagamentoIndex].mes.findIndex(mes => mes);
+  const naoPagamentoIndex = listaInformacaoDosApartamentos[
+    index
+  ].pago.findIndex((value) => !value.status);
+  const naoPagouEsseMes = listaInformacaoDosApartamentos[index].pago[
+    naoPagamentoIndex
+  ].mes.findIndex((mes) => mes);
 
   if (naoPagouEsseMes >= 0) {
-    listaInformacaoDosApartamentos[index].pago[naoPagamentoIndex].mes = listaInformacaoDosApartamentos[index].pago[naoPagamentoIndex].mes.filter(mesInterno => mesInterno !== mesAtual);
+    listaInformacaoDosApartamentos[index].pago[naoPagamentoIndex].mes =
+      listaInformacaoDosApartamentos[index].pago[naoPagamentoIndex].mes.filter(
+        (mesInterno) => mesInterno !== mesAtual
+      );
   }
 
   if (!pagouEsseMes) {
-    listaInformacaoDosApartamentos[index].pago[pagamentoIndex].mes.push(mesAtual);
+    listaInformacaoDosApartamentos[index].pago[pagamentoIndex].mes.push(
+      mesAtual
+    );
   }
 }
 
 function incluirDevedor(idDoApartamento, mesAtual) {
-  const index = listaInformacaoDosApartamentos.findIndex(apartamento => apartamento.id === idDoApartamento);
-  const naoPagamentoIndex = listaInformacaoDosApartamentos[index].pago.findIndex(value => !value.status);
-  const naoPagouEsseMes = listaInformacaoDosApartamentos[index].pago[naoPagamentoIndex].mes.includes(mesAtual);
+  const index = listaInformacaoDosApartamentos.findIndex(
+    (apartamento) => apartamento.id === idDoApartamento
+  );
+  const naoPagamentoIndex = listaInformacaoDosApartamentos[
+    index
+  ].pago.findIndex((value) => !value.status);
+  const naoPagouEsseMes =
+    listaInformacaoDosApartamentos[index].pago[naoPagamentoIndex].mes.includes(
+      mesAtual
+    );
 
-  const pagamentoIndex = listaInformacaoDosApartamentos[index].pago.findIndex(value => value.status);
-  const pagouEsseMes = listaInformacaoDosApartamentos[index].pago[pagamentoIndex].mes.findIndex(mes => mes);
+  const pagamentoIndex = listaInformacaoDosApartamentos[index].pago.findIndex(
+    (value) => value.status
+  );
+  const pagouEsseMes = listaInformacaoDosApartamentos[index].pago[
+    pagamentoIndex
+  ].mes.findIndex((mes) => mes);
 
-  if(pagouEsseMes >= 0) {
-    listaInformacaoDosApartamentos[index].pago[pagamentoIndex].mes = listaInformacaoDosApartamentos[index].pago[pagamentoIndex].mes.filter(mesInterno => mesInterno !== mesAtual);
+  if (pagouEsseMes >= 0) {
+    listaInformacaoDosApartamentos[index].pago[pagamentoIndex].mes =
+      listaInformacaoDosApartamentos[index].pago[pagamentoIndex].mes.filter(
+        (mesInterno) => mesInterno !== mesAtual
+      );
   }
 
   if (!naoPagouEsseMes) {
-    listaInformacaoDosApartamentos[index].pago[naoPagamentoIndex].mes.push(mesAtual);
+    listaInformacaoDosApartamentos[index].pago[naoPagamentoIndex].mes.push(
+      mesAtual
+    );
   }
 }
 
-function decideQuemEstaDevendo(listaApartamentos, apartamentosNaTela, mesReferencia = 0) {
+function decideQuemEstaDevendo(
+  listaApartamentos,
+  apartamentosNaTela,
+  mesReferencia = 0
+) {
   for (let i = 0; i < listaApartamentos.length; i++) {
     const infoApartamento = listaApartamentos[i];
     const apartamento = apartamentosNaTela[i];
 
-    alteraEstiloVisual(apartamento, 'reiniciar');
+    alteraEstiloVisual(apartamento, "reiniciar");
 
-    apartamento.innerText = `${infoApartamento.apartamento} - ${infoApartamento.nome}`;
-    apartamento.id = infoApartamento.id;
+    apartamento.innerText = infoApartamento.apartamento;
+    apartamento.id = `ap-${infoApartamento.id}`;
 
     if (mesReferencia > 0) {
-      const naoEstaPagoNoMes = infoApartamento.pago.findIndex(value => !value.status && value.mes.includes(mesReferencia));
-      const estaPagoNoMes = infoApartamento.pago.findIndex(value => value.status && value.mes.includes(mesReferencia));
+      const naoEstaPagoNoMes = infoApartamento.pago.findIndex(
+        (value) => !value.status && value.mes.includes(mesReferencia)
+      );
+      const estaPagoNoMes = infoApartamento.pago.findIndex(
+        (value) => value.status && value.mes.includes(mesReferencia)
+      );
 
       if (naoEstaPagoNoMes >= 0) {
         alteraEstiloVisual(apartamento, "devedor");
       }
-      if(estaPagoNoMes>= 0){
-        alteraEstiloVisual(apartamento,"pago")
+
+      if (estaPagoNoMes >= 0) {
+        alteraEstiloVisual(apartamento, "pago");
       }
     } else {
-      const naoEstaPago = infoApartamento.pago.find(value => !value.status);
+      const naoEstaPago = infoApartamento.pago.find((value) => !value.status);
       const temMesDevendo = naoEstaPago.mes.length;
 
       if (naoEstaPago && temMesDevendo > 0) {
@@ -919,14 +1000,20 @@ function decideQuemEstaDevendo(listaApartamentos, apartamentosNaTela, mesReferen
 }
 
 function pesquisaApartamento(valorPesquisado) {
-  const apartamentos = listaInformacaoDosApartamentos.filter(apartamento => {
+  const apartamentos = listaInformacaoDosApartamentos.filter((apartamento) => {
     if (apartamento.apartamento === valorPesquisado) {
       return apartamento;
     }
 
     // Documentando por https://medium.com/thread-engineering/searching-and-sorting-text-with-diacritical-marks-in-javascript-45afef20e7f2#
-    const nome = apartamento.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '');
-    const valueClean = valorPesquisado.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '');
+    const nome = apartamento.nome
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    const valueClean = valorPesquisado
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
 
     if (nome.search(valueClean) >= 0) {
       return apartamento;
@@ -937,11 +1024,11 @@ function pesquisaApartamento(valorPesquisado) {
 }
 
 function exibeResultado(arrayApartamentos) {
-  const resultado = document.querySelector('.resultado');
-  resultado.innerHTML = '';
+  const resultado = document.querySelector(".resultado");
+  resultado.innerHTML = "";
 
-  arrayApartamentos.forEach(apartamento => {
-    const p = document.createElement('p');
+  arrayApartamentos.forEach((apartamento) => {
+    const p = document.createElement("p");
     p.innerText = `${apartamento.apartamento} - ${apartamento.nome}`;
     resultado.appendChild(p);
   });
@@ -963,40 +1050,154 @@ function gerenciarPesquisa(evento) {
 }
 
 function alteraEstiloVisual(elemento, tipoRegra) {
-// if (tipoRegra=== "devedor"){
-//   elemento.style.backgroundColor= "green"
-// }
-// if (tipoRegra=== "pago"){
-//   elemento.style.backgroundColor = "inherit"
-// }
-// if (tipoRegra=== "reiniciar"){
-//   elemento.style.backgroundColor= "initial"
-// }
-const conjuntoRegras = {
-  devedor:{
-    backgroundColor: "green",
-    color:"white"
-  },
-  pago: {
-    backgroundColor: "blue",
-    color: "white"
-  },
-  reiniciar: {
-    backgroundColor:"inherit",
-    color: "inherit"
+  const conjuntoRegras = {
+    devedor: {
+      backgroundColor: "green",
+      color: "white",
+    },
+    pago: {
+      backgroundColor: "blue",
+      color: "white",
+    },
+    reiniciar: {
+      backgroundColor: "inherit",
+      color: "inherit",
+    },
+    visitante: {
+      color: "black",
+      backgroundColor: "yellow",
+    },
+  };
+  const regras = conjuntoRegras[tipoRegra];
+  if (regras) {
+    for (const key in regras) {
+      const valor = regras[key];
+      elemento.style[key] = valor;
+    }
   }
-}
-const regras = conjuntoRegras[tipoRegra]
-if (regras){
-  for (const key in regras) {
-    const valor= regras[key]
-    elemento.style[key] = valor
-  }
-}
 }
 
-// a função acima precisa receber dois prâmetros: elemento e o tipo de regra
-// dentro da função, vc vai aplicar a regra especificada no elemento
-// exemplo: alteraEstiloVisual(apartamento, 'devedor')
-// exemplo: alteraEstiloVisual(apartamento, 'pago')
-// exemplo: alteraEstiloVisual(apartamento, 'reiniciar')
+function criaElementoDeApartamento(arrayDeApartamento) {
+  const apDestino = document.querySelector("#destino");
+
+  const optionDesabilitado = document.createElement("option");
+  optionDesabilitado.innerText = "Selecione um apartamento";
+  optionDesabilitado.value = "";
+  optionDesabilitado.disabled = true;
+  optionDesabilitado.selected = true;
+
+  apDestino.appendChild(optionDesabilitado);
+
+  arrayDeApartamento.forEach((apartamento) => {
+    const option = document.createElement("option");
+    option.value = apartamento.id;
+    option.innerText = apartamento.apartamento;
+    apDestino.appendChild(option);
+  });
+}
+
+function capturaElementoPorId(id) {
+  const elemento = document.querySelector(`#ap-${id}`);
+  return elemento;
+}
+
+function gerenciaEntradaNoPredio() {
+  const nome = verificaNomeDoVisitante();
+  const apartamento = verificaApartamentoDoVisitante();
+
+  if (!nome || !apartamento) {
+    alert("Preencha os campos corretamente");
+    return;
+  }
+
+  const senha = geraSenhaDeEntrada();
+  let senhaDigitada;
+
+  do {
+    senhaDigitada = +verificaSenhaDeEntrada();
+  } while (senhaDigitada !== senha);
+
+  if (!confirmaEntrada()) {
+    return;
+  }
+
+  const apElemento = capturaElementoPorId(apartamento);
+  enviarVisitanteParaApartamento(apElemento, nome);
+  salvarInformacoes()
+}
+
+function verificaNomeDoVisitante() {
+  const nome = document.querySelector("#visitante").value;
+  return nome;
+}
+
+function verificaApartamentoDoVisitante() {
+  const apartamento = document.querySelector("#destino").value;
+  return apartamento;
+}
+
+function enviarVisitanteParaApartamento(apartamento, nome) {
+  const tagAncora = document.createElement("a");
+  tagAncora.href = `#${apartamento.id}`;
+  tagAncora.innerText = nome;
+  alteraEstiloVisual(tagAncora, "visitante");
+  tagAncora.addEventListener('click', gerenciarRemocao);
+
+  const tagBr = document.createElement("br");
+
+  apartamento.appendChild(tagAncora);
+  tagAncora.appendChild(tagBr);
+}
+
+function geraSenhaDeEntrada() {
+  const senha = Math.floor(Math.random() * 10);
+  return senha;
+}
+
+function verificaSenhaDeEntrada() {
+  const senha = prompt("Digite a senha de entrada");
+  return senha;
+}
+
+function confirmaEntrada() {
+  const confirma = confirm("Deseja confirmar a entrada?");
+  return confirma;
+}
+
+function gerenciarRemocao(event) {
+  event.preventDefault();
+  const target = event.target;
+
+  if (target.tagName !== "A") {
+    return;
+  }
+
+  removeVisita(target);
+}
+
+function removeVisita(elemento) {
+  elemento.remove();
+}
+
+function salvarInformacoes() {
+  var VisitaNaTela = document.getElementById("visitante").value;
+  let visitanteNoPredio = localStorage.getItem("visitante")
+  let arrayVisitas = []
+  if (visitanteNoPredio){
+    arrayVisitas= JSON.parse(visitanteNoPredio)
+  } 
+  arrayVisitas.push(VisitaNaTela)
+  arrayVisitas =JSON.stringify(arrayVisitas)
+  localStorage.setItem("visitante", arrayVisitas);
+}
+ window.addEventListener("load",  function () {
+            var visitaNaTela = localStorage.getItem("visitante");
+            if (visitaNaTela) {
+                document.getElementById("visitante").value = visitaNaTela;
+            }
+        });
+
+// guardar elemento dos visitantes para, a cada renderização, continuar exibindo os visitantes
+// criar um array de visitantes
+// criar uma função que recebe o array de visitantes
+// exibir em tela os visitantes

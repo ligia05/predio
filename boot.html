@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  
+    <title>Recarregar Página com Informações</title>
 </head>
 <body>
-    
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome">
+    <button onclick="salvarInformacoes()">Salvar</button>
+
+    <script>
+        // Função para salvar as informações no localStorage
+        function salvarInformacoes() {
+            var nome = document.getElementById("nome").value;
+            localStorage.setItem("nome", nome);
+        }
+
+        // Verifique se há informações armazenadas no localStorage ao carregar a página
+        window.onload = function () {
+            var nome = localStorage.getItem("nome");
+            if (nome) {
+                document.getElementById("nome").value = nome;
+            }
+        };
+    </script>
 </body>
 </html>
+
+
