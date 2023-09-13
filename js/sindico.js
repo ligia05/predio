@@ -849,7 +849,7 @@ function gerenciarDevedor(evento) {
   const id = +target.id.substring(3);
   const mes = mesDeReferencia();
 
-  if (target.tagName !== 'DIV') {
+  if (target.tagName !== "DIV") {
     return;
   }
 
@@ -868,7 +868,7 @@ function gerenciarDevedor(evento) {
 function gerenciarPagamento(evento) {
   const target = evento.target;
 
-  if (target.tagName !== 'DIV') {
+  if (target.tagName !== "DIV") {
     return;
   }
 
@@ -997,6 +997,7 @@ function decideQuemEstaDevendo(
       }
     }
   }
+  carregarVisitasNaTela();
 }
 
 function pesquisaApartamento(valorPesquisado) {
@@ -1113,17 +1114,21 @@ function gerenciaEntradaNoPredio() {
   const senha = geraSenhaDeEntrada();
   let senhaDigitada;
 
-  do {
-    senhaDigitada = +verificaSenhaDeEntrada();
-  } while (senhaDigitada !== senha);
+  // do {
+  //   senhaDigitada = +verificaSenhaDeEntrada();
+  // } while (senhaDigitada !== senha);
 
   if (!confirmaEntrada()) {
     return;
   }
 
   const apElemento = capturaElementoPorId(apartamento);
-  enviarVisitanteParaApartamento(apElemento, nome);
-  salvarInformacoes()
+  
+  salvarInformacoes(nome, apElemento);
+  const listaVisitas = buscarVisitas()
+  const posicao = listaVisitas.length -1
+  const objetoVisita= listaVisitas[posicao]
+  enviarVisitanteParaApartamento(apElemento,objetoVisita)
 }
 
 function verificaNomeDoVisitante() {
@@ -1136,12 +1141,13 @@ function verificaApartamentoDoVisitante() {
   return apartamento;
 }
 
-function enviarVisitanteParaApartamento(apartamento, nome) {
+function enviarVisitanteParaApartamento(apartamento,visitante) {
   const tagAncora = document.createElement("a");
   tagAncora.href = `#${apartamento.id}`;
-  tagAncora.innerText = nome;
+  tagAncora.innerText = visitante.nome;
+  tagAncora.title = visitante.horario;
   alteraEstiloVisual(tagAncora, "visitante");
-  tagAncora.addEventListener('click', gerenciarRemocao);
+  tagAncora.addEventListener("click", gerenciarRemocao);
 
   const tagBr = document.createElement("br");
 
@@ -1172,32 +1178,74 @@ function gerenciarRemocao(event) {
     return;
   }
 
+  const idDoApartamento = target.hash.replace("#", "");
+
   removeVisita(target);
+  removeVisitaDoStorage(target.innerText, idDoApartamento);
 }
 
 function removeVisita(elemento) {
   elemento.remove();
 }
 
-function salvarInformacoes() {
-  var VisitaNaTela = document.getElementById("visitante").value;
-  let visitanteNoPredio = localStorage.getItem("visitante")
-  let arrayVisitas = []
-  if (visitanteNoPredio){
-    arrayVisitas= JSON.parse(visitanteNoPredio)
-  } 
-  arrayVisitas.push(VisitaNaTela)
-  arrayVisitas =JSON.stringify(arrayVisitas)
+function salvarInformacoes(visitante, apartamento) {
+  let arrayVisitas= buscarVisitas()
+  
+  const hora=new Date()
+  
+
+  const objetoVisitante = {
+    nome: visitante,
+    idApartamento: apartamento.id,
+    horario:hora.toLocaleString()
+  };
+
+  arrayVisitas.push(objetoVisitante);
+  arrayVisitas = JSON.stringify(arrayVisitas);
   localStorage.setItem("visitante", arrayVisitas);
 }
- window.addEventListener("load",  function () {
-            var visitaNaTela = localStorage.getItem("visitante");
-            if (visitaNaTela) {
-                document.getElementById("visitante").value = visitaNaTela;
-            }
-        });
 
-// guardar elemento dos visitantes para, a cada renderização, continuar exibindo os visitantes
-// criar um array de visitantes
-// criar uma função que recebe o array de visitantes
-// exibir em tela os visitantes
+// window.addEventListener("DOMContentLoaded", carregarVisitasNaTela); // disparado assim que o DOM termina de carregar, sem esperar a execução dos recursos
+// window.addEventListener("load", carregarVisitasNaTela); // disparado somente quando a tela termina de carregar e executar todos os recursos
+
+function carregarVisitasNaTela() {
+  const visitasConvertidas= buscarVisitas()
+
+  
+
+  visitasConvertidas.forEach((visita) => {
+    const apElemento = document.getElementById(visita.idApartamento);
+   
+    enviarVisitanteParaApartamento(apElemento, visita);
+  
+  });
+}
+
+function removeVisitaDoStorage(nome, idApartamento) {
+  let visitasConvertidas= buscarVisitas()
+  visitasConvertidas = visitasConvertidas.filter(
+    (visita) =>
+      !(visita.nome === nome && visita.idApartamento === idApartamento)
+  );
+  localStorage.setItem("visitante", JSON.stringify(visitasConvertidas));
+}
+function buscarVisitas(){
+  const arrayDeVisitas = localStorage.getItem("visitante");
+  let visitasConvertidas = [];
+
+  if (arrayDeVisitas) {
+    visitasConvertidas = JSON.parse(arrayDeVisitas);
+  }
+return visitasConvertidas
+}
+setInterval(myTimer, 500);
+
+function myTimer() {
+  const d = new Date();
+  document.getElementById("relogio").innerHTML = d.toLocaleTimeString();
+}
+setInterval(myDate, 1000);
+function myDate(){
+  const tempo = new Date()
+  document.getElementById("dia").innerHTML = tempo.toLocaleDateString();
+}
